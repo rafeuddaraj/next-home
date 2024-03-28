@@ -6,13 +6,21 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    container: {
+      padding: {
+        DEFAULT: '1.5rem',
+        sm: '2.5rem',
+        lg: '4rem',
+        xl: '6rem',
+        '2xl': '8rem',
       },
-    },
+    }
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  presets: [require("keep-react/preset")],
+  daisyui: {
+    themes: false,
+    darkTheme: "light"
+  }
+
 };
