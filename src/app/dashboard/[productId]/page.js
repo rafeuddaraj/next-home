@@ -1,8 +1,6 @@
 export default function page() {
     return (
         <section className="!container my-10">
-
-
             <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
                 <div class="w-full overflow-x-auto">
                     <table class="w-full">
@@ -105,7 +103,6 @@ export default function page() {
                     </table>
                 </div>
             </div>
-
         </section>
     );
 }

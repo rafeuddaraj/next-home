@@ -21,4 +21,12 @@
         color: #fff;
         background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
     }
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 }
