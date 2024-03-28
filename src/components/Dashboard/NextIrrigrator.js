@@ -1,34 +1,63 @@
 'use client'
-
-import { useState } from "react";
+import { app } from '@/firebase/firebase';
+import { getDatabase, onValue, ref, update } from 'firebase/database';
+import { useEffect, useRef, useState } from "react";
 
 export default function NextIrrigator() {
+    const db = getDatabase(app)
+    const trackFirst = useRef(1)
+    // console.log(app);
     const [isStop, setIsStop] = useState('');
+    useEffect(() => {
+        const dbRef = ref(db, '/LED_STATUS')
+        onValue(dbRef, (snapshot) => {
+            if (snapshot.exists()) {
+                const status = snapshot.val()
+                if (trackFirst.current === 1 && !status) {
+                    trackFirst.current = 2
+                } else {
+                    setIsStop(status)
+                }
+            }
+        })
+        return () => {
+            trackFirst.current = 1
+        }
+    }, [])
+
+
+    const handleOnOFF = (status) => {
+        update(ref(db), { '/LED_STATUS': status })
+            .then((value) => {
+                setIsStop(status)
+            })
+    }
+
     return (
         <section className="my-10">
             <div className="!container">
-                <div class="w-[35%] mx-auto max-w-sm p-8 rounded-lg shadow-md bg-base-100">
-                    <h2 class="text-2xl font-semibold text-center mb-4">Water Control</h2>
-                    <div class="flex justify-center items-center space-x-4">
-                        <button onClick={() => !isStop && setIsStop(true)} class="px-4 py-2 rounded-md bg-green-500 text-white font-semibold hover:bg-green-700 focus:outline-none">Turn On</button>
-                        <button class="px-4 py-2 rounded-md bg-gray-400 text-white font-semibold hover:bg-gray-600 focus:outline-none" onClick={() => {
+                <div className="w-[35%] mx-auto max-w-sm p-8 rounded-lg shadow-md bg-base-100">
+                    <h2 className="text-2xl font-semibold text-center mb-4">Water Control</h2>
+                    <div className="flex justify-center items-center space-x-4">
+                        <button onClick={() => !isStop && handleOnOFF(true)} className="px-4 py-2 rounded-md bg-green-500 text-white font-semibold hover:bg-green-700 focus:outline-none">Turn On</button>
+                        <button className="px-4 py-2 rounded-md bg-gray-400 text-white font-semibold hover:bg-gray-600 focus:outline-none" onClick={() => {
                             if (isStop) {
-                                setIsStop(false)
+                                handleOnOFF(false)
                             }
                         }}>Turn Off</button>
                     </div>
-                    <div class="mt-8 relative">
+                    <div className="mt-8 relative">
 
-                        {isStop ? <div style={{ backgroundImage: `url(/tenor.gif)` }} alt="Waterfall Status" class="w-full rounded-lg shadow-md h-44 bg-contain" /> : isStop === false ? <video class="w-full rounded-lg shadow-md" autoPlay muted>
+                        {isStop ? <div style={{ backgroundImage: `url(/tenor.gif)` }} alt="Waterfall Status" className="w-full rounded-lg shadow-md h-44 bg-contain" /> : isStop === false ? <video className="w-full rounded-lg shadow-md" autoPlay muted>
                             <source src="/stop.mp4" type="video/mp4" />
                         </video> : "Stop"}
 
 
 
-                        <div id="loadingOverlay" class="absolute inset-0 bg-gray-500 opacity-75 hidden justify-center items-center">
-                            <svg class="animate-spin h-10 w-10 text-white" viewBox="0 0 24 24">
+                        <div id="loadingOverlay" className="absolute inset-0 bg-gray-500 opacity-75 hidden justify-center items-center">
+                            <svg className="animate-spin h-10 w-10 text-white" viewBox="0 0 24 24">
                             </svg>
-                            <span class="text-white ml-2">Loading...</span>
+                            <span className="text-white ml-2">Loading...</span>
                         </div>
                     </div>
                 </div>
