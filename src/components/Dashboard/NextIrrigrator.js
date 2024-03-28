@@ -7,7 +7,7 @@ export default function NextIrrigator() {
     return (
         <section className="my-10">
             <div className="!container">
-                <div class="w-[35%] mx-auto max-w-sm p-8 rounded-lg shadow-md bg-white">
+                <div class="w-[35%] mx-auto max-w-sm p-8 rounded-lg shadow-md bg-base-100">
                     <h2 class="text-2xl font-semibold text-center mb-4">Water Control</h2>
                     <div class="flex justify-center items-center space-x-4">
                         <button onClick={() => !isStop && setIsStop(true)} class="px-4 py-2 rounded-md bg-green-500 text-white font-semibold hover:bg-green-700 focus:outline-none">Turn On</button>

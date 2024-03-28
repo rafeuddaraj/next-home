@@ -12,8 +12,8 @@ export default function Landing() {
                 <div className="hero-overlay bg-opacity-80"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-5xl">
-                        <h1 className="mb-5 text-5xl font-bold text-[#FF00D3]">Transform Your Space. Simplify Your Life. Introducing Next Home.</h1>
-                        <p className="mb-5 max-w-2xl mx-auto text-white text-lg my-5">Next Home is your all-in-one home automation software and IoT platform. Effortlessly control your lights, thermostats, appliances, and more from a single, intuitive app. Next Home creates a seamless, personalized living experience that saves you time and energy.</p>
+                        <h1 className="mb-5 text-2xl md:text-5xl font-bold text-[#FF00D3]">Transform Your Space. Simplify Your Life. Introducing Next Home.</h1>
+                        <p className="mb-5 max-w-2xl mx-auto text-white text:md md:text-lg my-5">Next Home is your all-in-one home automation software and IoT platform. Effortlessly control your lights, thermostats, appliances, and more from a single, intuitive app. Next Home creates a seamless, personalized living experience that saves you time and energy.</p>
                         <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>
@@ -113,10 +113,16 @@ export default function Landing() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
                                     <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
                                 </svg>
-                                <p class="leading-relaxed text-lg">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware. Man bun next level coloring book skateboard four loko knausgaard. Kitsch keffiyeh master cleanse direct trade indigo juice before they sold out gentrify plaid gastropub normcore XOXO 90's pickled cindigo jean shorts. Slow-carb next level shoindigoitch ethical authentic, yr scenester sriracha forage franzen organic drinking vinegar.</p>
+                                <p class="leading-relaxed text-lg">I've always loved having fresh flowers in my home, but I often struggle to keep them alive. I'm either too busy to water them regularly, or I forget altogether. That's why I was so excited to try the IOT Flower Watering System.
+
+                                    This system is a lifesaver for busy plant parents like me. It uses a soil moisture sensor to monitor the water levels in your plants' pots, and then automatically waters them when needed. You can set the system to water your plants on a schedule, or you can water them manually using the included app.
+
+                                    The IOT Flower Watering System is easy to set up and use. I simply plugged the base unit into an outlet, placed the sensors in my plants' pots, and downloaded the app. The app is very user-friendly, and it allows me to see the water levels in all of my plants at a glance.
+
+                                    I've been using the IOT Flower Watering System for a few weeks now, and I'm very impressed with it. My plants have never looked healthier, and I have peace of mind knowing that they're always getting the water they need.</p>
                                 <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                                <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
-                                <p class="text-gray-500">Senior Product Designer</p>
+                                <h2 class="text-gray-900 dark:text-white font-medium title-font tracking-wider text-sm">Rafe Uddaraj</h2>
+                                <p class="text-gray-500 dark:text-white">Full Stack Developer</p>
                             </div>
                         </div>
                     </section>
