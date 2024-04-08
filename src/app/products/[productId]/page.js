@@ -30,7 +30,7 @@ export default async function page({ params: { productId } }) {
             <main className="">
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row-reverse">
-                        <Image src={thumbnail} height={400} width={400} className="max-w-sm rounded-lg shadow-2xl" alt={title} />
+                        <Image src={thumbnail} height={250} width={250} quality={100} className="max-w-sm rounded-lg shadow-2xl" alt={title} />
                         <div>
                             <h1 className="text-5xl font-bold text-pink-600">{title}</h1>
                             <p className="py-6">{description}</p>
