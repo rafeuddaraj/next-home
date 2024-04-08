@@ -24,12 +24,12 @@ export default function NextIrrigator() {
         return () => {
             trackFirst.current = 1
         }
-    }, [])
+    }, [db])
 
 
     const handleOnOFF = (status) => {
         update(ref(db), { '/LED_STATUS': status })
-            .then((value) => {
+            .then(() => {
                 setIsStop(status)
             })
     }
