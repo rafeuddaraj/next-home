@@ -9,6 +9,9 @@
         height: 100vh;
         --media-object-fit: cover;
     }
+    .warning {
+        border-bottom: 1px solid red !important;
+    }
 
     .title {
         font-family: Helvetica, Arial, sans-serif;

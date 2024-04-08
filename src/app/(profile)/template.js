@@ -1,7 +1,16 @@
+'use client'
 import MotionDiv from "@/components/UI/MotionDiv";
+import useAuthChecker from "@/hooks/useAuthChecker";
+import { useRouter } from "next/navigation";
 
 
-export default function template({ children }) {
+export default function ProfileTemplate({ children }) {
+    const isAuth = useAuthChecker()
+    const router = useRouter()
+    if (isAuth === null) {
+        router.push('/signin')
+        return
+    }
     return (
         <MotionDiv
             initial={{ opacity: 0 }}

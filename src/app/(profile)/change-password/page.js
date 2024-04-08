@@ -5,6 +5,7 @@ export default function Password() {
         <>
             <div className="content w-[70%]">
                 <form className="flex w-full flex-col gap-3" action="">
+                    <h2 className="text-4xl text-pink-500">This page is still development mode</h2>
                     <div className="flex w-full flex-col">
                         <label className="flex" htmlFor="name">
                             Current password

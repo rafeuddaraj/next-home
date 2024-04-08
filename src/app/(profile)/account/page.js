@@ -1,5 +1,13 @@
+'use client'
+import useAuthChecker from '@/hooks/useAuthChecker';
+import Image from 'next/image';
+export default function AccountPage() {
 
-export default function page() {
+    const auth = useAuthChecker()
+
+    const { photoURL, email, displayName } = auth || {}
+    console.log(auth);
+
     return (
 
 
@@ -7,15 +15,15 @@ export default function page() {
             <div className="w-full">
                 <h2>Avatar image</h2>
                 <div className="mx-auto mb-5 flex flex-row items-center bg-neutral-100 py-5 lg:mx-0 lg:w-1/2">
-                    <img
+                    <Image
                         className="ml-5 h-20 w-20 rounded-full"
-                        src={
-                            "https://i.ibb.co/hV3TMVY/avatar-nobody.png"
-                        }
-                        alt="Sarah Johnson image"
+                        src={photoURL}
+                        height={100}
+                        width={100}
+                        alt={displayName}
                     />
 
-                    <form>
+                    {/* <form>
                         <div>
                             <label className="block">
                                 <span className="sr-only">
@@ -28,7 +36,7 @@ export default function page() {
                                 />
                             </label>
                         </div>
-                    </form>
+                    </form> */}
                 </div>
             </div>
 
@@ -42,6 +50,8 @@ export default function page() {
                         className="w-full border px-4 py-2 lg:w-1/2"
                         type="text"
                         placeholder="Sarah"
+                        disabled
+                        value={displayName}
                     />
                 </div>
 
@@ -53,6 +63,8 @@ export default function page() {
                     <input
                         className="w-full border px-4 py-2 lg:w-1/2"
                         type="email"
+                        disabled
+                        value={email}
                         placeholder="Johnson"
                     />
                 </div>

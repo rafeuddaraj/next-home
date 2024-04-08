@@ -5,7 +5,7 @@ export default function page() {
                 <div class="w-full overflow-x-auto">
                     <table class="w-full">
                         <thead>
-                            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                            <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-base-100 uppercase border-b border-gray-600">
                                 <th class="px-4 py-3">Date</th>
                                 <th class="px-4 py-3">Water Level</th>
                                 <th class="px-4 py-3">Status</th>
@@ -14,7 +14,7 @@ export default function page() {
                                 <th class="px-4 py-3">Average Time</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white">
+                        <tbody class="bg-base-200">
                             <tr class="text-gray-700">
                                 <td class="px-4 py-3 text-ms font-semibold border">
                                     10:12PM 2024:03:28
