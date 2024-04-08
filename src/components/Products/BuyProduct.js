@@ -1,15 +1,11 @@
 'use client'
 
-import useAuthChecker from "@/hooks/useAuthChecker";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import PaymentModal from "../UI/PaymentModal";
 
 export default function BuyProduct({ product }) {
     const [showModal, setShowModal] = useState(false)
-    const router = useRouter()
-    const auth = useAuthChecker()
-    if (auth === null) router.push('/signin')
+
 
     return (
         <>

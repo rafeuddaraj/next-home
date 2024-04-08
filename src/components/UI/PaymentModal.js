@@ -1,9 +1,13 @@
 import useAuthChecker from "@/hooks/useAuthChecker";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from 'react';
 
 export default function PaymentModal({ onShowModal, product }) {
     const { title, price } = product || {};
-    const { displayName, email } = useAuthChecker() || {};
+    const auth = useAuthChecker()
+    const { displayName, email } = auth || {}
+    const router = useRouter()
+    if (auth === null) router.push('/signin')
 
     const overlay = useRef();
     const [formData, setFormData] = useState({
