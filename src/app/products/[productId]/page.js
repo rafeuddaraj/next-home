@@ -3,6 +3,23 @@ import { app } from "@/firebase/firebase";
 import { child, get, getDatabase, ref } from "firebase/database";
 import Image from 'next/image';
 import Link from 'next/link';
+
+
+
+export async function generateMetadata({ params: { productId } }) {
+    const id = productId.split('--')[1]
+    const dbRef = ref(getDatabase(app))
+    const product = (await get(child(dbRef, `/products/${id}`))).val()
+    const { title, description, thumbnail } = product
+    return {
+        title,
+        description,
+        openGraph: {
+            images: [thumbnail],
+        },
+    }
+}
+
 export default async function page({ params: { productId } }) {
     const id = productId.split('--')[1]
     const dbRef = ref(getDatabase(app))

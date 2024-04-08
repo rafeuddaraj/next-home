@@ -2,8 +2,16 @@
 import { app } from '@/firebase/firebase';
 import useAuthChecker from '@/hooks/useAuthChecker';
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+export function generateMetadata() {
+    return {
+        title: "Sign in"
+    }
+}
+
 export default function SignIN() {
     const auth = getAuth(app)
     const router = useRouter()

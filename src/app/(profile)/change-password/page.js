@@ -1,4 +1,8 @@
-
+export function generateMetadata() {
+    return {
+        title: "Change Password"
+    }
+}
 
 export default function Password() {
     return (
