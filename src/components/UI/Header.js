@@ -59,7 +59,7 @@ export default function Header() {
                             </ul>
                         </div>
                     </>) : (<>
-                        <Link href='/signin' class="btn btn-primary mx-5">Sign In Now</Link>
+                        <Link href='/signin' className="btn btn-primary mx-5">Sign In Now</Link>
                     </>)}
                 </div>
             </nav>
