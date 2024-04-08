@@ -3,12 +3,6 @@ import useAuthChecker from '@/hooks/useAuthChecker';
 import Image from 'next/image';
 export default function AccountPage() {
 
-    export function generateMetadata() {
-        return {
-            title: "Profile"
-        }
-    }
-
     const auth = useAuthChecker()
 
     const { photoURL, email, displayName } = auth || {}

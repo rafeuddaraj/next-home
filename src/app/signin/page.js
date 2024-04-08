@@ -6,11 +6,6 @@ import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, getAuth, 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-export function generateMetadata() {
-    return {
-        title: "Sign in"
-    }
-}
 
 export default function SignIN() {
     const auth = getAuth(app)

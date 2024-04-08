@@ -3,11 +3,6 @@
 import Animate from "@/components/UI/Animate";
 import Link from 'next/link';
 
-export function generateMetadata() {
-    return {
-        title: "Dashboard"
-    }
-}
 
 export default function Dashboard() {
 
