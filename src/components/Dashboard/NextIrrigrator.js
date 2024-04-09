@@ -36,6 +36,7 @@ export default function NextIrrigator() {
         })
     }, [auth?.uid])
 
+    // eslint-disable-next-line no-unused-vars
     const { startStatus, lastStartedTime, waterLevel, averageStartingTime, history } = irrigatorDetails || {}
 
     const historyArrayAvgTime = Object.keys(history || {}).map(key => {

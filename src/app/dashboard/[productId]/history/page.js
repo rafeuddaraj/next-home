@@ -12,6 +12,7 @@ export default function HistoryPage() {
     const [paymentStatus, setPaymentStatus] = useState(false)
     const dbRef = ref(getDatabase(app))
     const [history, setHistory] = useState(null)
+    // eslint-disable-next-line no-unused-vars
     const [irrigatorDetails, setIrrigatorDetails] = useState(null)
 
     useEffect(() => {
