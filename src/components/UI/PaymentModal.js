@@ -16,7 +16,7 @@ export default function PaymentModal({ onShowModal, product }) {
     const overlay = useRef();
     const [formData, setFormData] = useState({
         paymentMethod: "",
-        transactionsId: ""
+        transactionId: ""
     });
 
     const handleDismiss = (e) => {
@@ -35,21 +35,37 @@ export default function PaymentModal({ onShowModal, product }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const paymentData = {
-            productId: id,
-            productTitle: title,
-            userId: uid,
-            fullName: displayName,
-            paymentStatus: true,
-            totalPayment: price,
+        if (Object.values(formData).every(inp => inp)) {
+            const paymentData = {
+                productId: id,
+                productTitle: title,
+                userId: uid,
+                fullName: displayName,
+                paymentStatus: false,
+                totalPayment: price,
+            }
+            set(dbRef, {
+                ...paymentData,
+                ...formData
+            })
+            const dbRef2 = ref(getDatabase(app), `/nextIrrigator/${uid}`)
+            const irrigatorData = {
+                "averageStartingTime": 0,
+                "history": {},
+                "lastStartedTime": 0,
+                "startStatus": false,
+                "userId": uid,
+                "waterLevel": 0
+            }
+            set(dbRef2, {
+                ...irrigatorData
+            }).then(() => {
+                onShowModal(false)
+                router.push('/dashboard')
+            })
+        } else {
+            alert("Don't Empty submit!")
         }
-        set(dbRef, {
-            ...paymentData,
-            ...formData
-        }).then(() => {
-            onShowModal(false)
-            router.push('/dashboard')
-        })
 
     };
 
