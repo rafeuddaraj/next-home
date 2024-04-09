@@ -71,8 +71,11 @@ export default function PaymentModal({ onShowModal, product }) {
 
     return (
         <div onClick={handleDismiss} ref={overlay} className="fixed top-0 left-0 right-0 bottom-0 bg-black/55 backdrop-blur-[2px] z-50">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75">
                 <form onSubmit={handleSubmit}>
+                    <div className="mockup-code">
+                        <pre data-prefix="$"><code>Account Number: 01642441724</code></pre>
+                    </div>
                     <div className="h-auto w-80 bg-base-200 p-3 rounded-lg space-y-10">
                         <p className="text-xl font-semibold py-5">Payment Details</p>
                         <div className="input_text mt-6 relative">
