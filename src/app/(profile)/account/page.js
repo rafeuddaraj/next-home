@@ -42,7 +42,7 @@ export default function AccountPage() {
 
             <form className="flex w-full flex-col gap-3" action="">
                 <div className="flex w-full flex-col">
-                    <label className="flex" htmlFor="name">
+                    <label className="flex" htmlhtmlFor="name">
                         Name
                         <span className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
                     </label>
@@ -56,7 +56,7 @@ export default function AccountPage() {
                 </div>
 
                 <div className="flex w-full flex-col">
-                    <label className="flex" htmlFor="name">
+                    <label className="flex" htmlhtmlFor="name">
                         Email
                         <span className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
                     </label>

@@ -1,105 +1,122 @@
 {
-    "LED_STATUS": false,
+    "buyProducts": {
+        "K1C8daJRMtZoHYs6b3WVlsFLot13": {
+            "fullName": "Rafe Uddaraj",
+            "paymentMethod": "bkash",
+            "paymentStatus": true,
+            "productId": "a863a238ca55",
+            "productTitle": "Next Irrigator",
+            "totalPayment": 100,
+            "transactionId": "6723464736",
+            "transactionsId": "",
+            "userId": "K1C8daJRMtZoHYs6b3WVlsFLot13"
+        }
+    },
+    "nextIrrigator": {
+        "K1C8daJRMtZoHYs6b3WVlsFLot13": {
+            "averageStartingTime": 0,
+            "history": {
+                "1711052967": {
+                    "endTime": 1712674560687,
+                    "startStatus": false,
+                    "startTime": 1712674119918,
+                    "waterLevel": 10
+                },
+                "1712674560687": {
+                    "endTime": 1712674119918,
+                    "startStatus": false,
+                    "startTime": 1712674119179,
+                    "waterLevel": 10
+                }
+            },
+            "lastStartedTime": 1711052967,
+            "startStatus": true,
+            "userId": "K1C8daJRMtZoHYs6b3WVlsFLot13",
+            "waterLevel": 10
+        }
+    },
     "products": {
-        "dca6231d-41b7-46ab-9971-a863a238ca55": {
-            "id": "dca6231d-41b7-46ab-9971-a863a238ca55",
-            "title": "Next Irrigator",
+        "a863a238ca55": {
             "description": "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et Link id nisi.",
+            "featured": [
+                {
+                    "description": "Users can monitor real-time data on soil moisture  levels, water usage, and system status through the web interface, providing valuable insights for decision-making",
+                    "image": "https://i.ibb.co/Fsm6sYk/icons8-monitoring-48.png",
+                    "title": "Real-Time Monitoring"
+                },
+                {
+                    "description": "The web interface is mobile-responsive, allowing users to control and monitor the irrigation system conveniently from their smartphones, enhancing accessibility and ease of use.",
+                    "image": "https://i.ibb.co/PrMDSrF/icons8-remote-48.png",
+                    "title": "Mobile Accessibility"
+                },
+                {
+                    "description": "The system sends timely alerts and notifications to users, informing them of critical events such as low water levels, system malfunctions, or maintenance requirements.",
+                    "image": "https://i.ibb.co/y6KGG9Z/icons8-alert-50.png",
+                    "title": "Alerts and Notifications:"
+                },
+                {
+                    "description": "Optionally, the system can be expanded to include sensors for monitoring water quality, ensuring that the irrigated water meets the required standards for optimal plant growth.",
+                    "image": "https://i.ibb.co/wgCCpjK/icons8-water-meter-32.png",
+                    "title": "Water Quality Monitoring"
+                },
+                {
+                    "description": "The Product can be integrated with existing smart home systems, allowing users to include irrigation control in their overall home automation setup.",
+                    "image": "https://i.ibb.co/fHgBZ9q/icons8-smart-home-48.png",
+                    "title": "• Integration with Smart Home Systems"
+                },
+                {
+                    "description": "The web interface includes a water savings calculator, enabling users to estimate the amount of water saved over time compared to traditional irrigation methods.",
+                    "image": "https://i.ibb.co/JkS2g1J/icons8-calculator-50.png",
+                    "title": "Water Savings Calculator"
+                },
+                {
+                    "description": "The project includes a mechanism for receiving and implementing continuous software updates, ensuring that users benefit from the latest features, improvements, and security patches.",
+                    "image": "https://i.ibb.co/gV4d4K6/icons8-update-64.png",
+                    "title": "Continuous Software Updates"
+                }
+            ],
+            "id": "a863a238ca55",
+            "price": 100,
+            "qna": [
+                {
+                    "answer": "The web interface provides real-time data on soil moisture levels, water usage, and system status, offering valuable insights for decision-making.",
+                    "question": "What features does the irrigation system's web interface offer for real-time monitoring?"
+                },
+                {
+                    "answer": "The web interface is mobile-responsive, allowing users to conveniently control and monitor the irrigation system from their smartphones, enhancing accessibility and ease of use.",
+                    "question": "How does the system enhance accessibility for users?"
+                },
+                {
+                    "answer": "The system sends timely alerts and notifications to users, informing them of critical events such as low water levels, system malfunctions, or maintenance requirements.",
+                    "question": "What alerts and notifications does the system send to users?"
+                },
+                {
+                    "answer": "Optionally, the system can be expanded to include sensors for monitoring water quality, ensuring that the irrigated water meets the required standards for optimal plant growth.",
+                    "question": "What optional feature can be added to the system for enhanced monitoring?"
+                },
+                {
+                    "answer": "The system can be integrated with existing smart home systems, allowing users to include irrigation control in their overall home automation setup.",
+                    "question": "How does the system integrate with smart home systems?"
+                },
+                {
+                    "answer": "The web interface includes a water savings calculator, enabling users to estimate the amount of water saved over time compared to traditional irrigation methods.",
+                    "question": "What tool does the web interface include to help users estimate water savings?"
+                },
+                {
+                    "answer": "The project includes a mechanism for receiving and implementing continuous software updates, ensuring that users benefit from the latest features, improvements, and security patches.",
+                    "question": "How does the system ensure users benefit from the latest features and improvements?"
+                }
+            ],
+            "tags": ["IOT", "SOFTWARE"],
             "thumbnail": "https://i.ibb.co/F71WVN5/product-1.png",
+            "title": "Next Irrigator",
             "workingProcess": [
                 "Internet",
                 "Web Application",
                 "Server",
                 "Microprocessor",
                 "Water Pump"
-            ],
-            "featured": [
-                {
-                    "title": "Real-Time Monitoring",
-                    "description": "Users can monitor real-time data on soil moisture  levels, water usage, and system status through the web interface, providing valuable insights for decision-making",
-                    "image": "https://i.ibb.co/Fsm6sYk/icons8-monitoring-48.png"
-                },
-                {
-                    "title": "Mobile Accessibility",
-                    "description": "The web interface is mobile-responsive, allowing users to control and monitor the irrigation system conveniently from their smartphones, enhancing accessibility and ease of use.",
-                    "image": "https://i.ibb.co/PrMDSrF/icons8-remote-48.png"
-                },
-                {
-                    "title": "Alerts and Notifications:",
-                    "description": "The system sends timely alerts and notifications to users, informing them of critical events such as low water levels, system malfunctions, or maintenance requirements.",
-                    "image": "https://i.ibb.co/y6KGG9Z/icons8-alert-50.png"
-                },
-                {
-                    "title": "Water Quality Monitoring",
-                    "description": "Optionally, the system can be expanded to include sensors for monitoring water quality, ensuring that the irrigated water meets the required standards for optimal plant growth.",
-                    "image": "https://i.ibb.co/wgCCpjK/icons8-water-meter-32.png"
-                },
-                {
-                    "title": "• Integration with Smart Home Systems",
-                    "description": "The Product can be integrated with existing smart home systems, allowing users to include irrigation control in their overall home automation setup.",
-                    "image": "https://i.ibb.co/fHgBZ9q/icons8-smart-home-48.png"
-                },
-                {
-                    "title": "Water Savings Calculator",
-                    "description": "The web interface includes a water savings calculator, enabling users to estimate the amount of water saved over time compared to traditional irrigation methods.",
-                    "image": "https://i.ibb.co/JkS2g1J/icons8-calculator-50.png"
-                },
-                {
-                    "title": "Continuous Software Updates",
-                    "description": "The project includes a mechanism for receiving and implementing continuous software updates, ensuring that users benefit from the latest features, improvements, and security patches.",
-                    "image": "https://i.ibb.co/gV4d4K6/icons8-update-64.png"
-                }
-            ],
-            "qna": [
-                {
-                    "question": "What features does the irrigation system's web interface offer for real-time monitoring?",
-                    "answer": "The web interface provides real-time data on soil moisture levels, water usage, and system status, offering valuable insights for decision-making."
-                },
-                {
-                    "question": "How does the system enhance accessibility for users?",
-                    "answer": "The web interface is mobile-responsive, allowing users to conveniently control and monitor the irrigation system from their smartphones, enhancing accessibility and ease of use."
-                },
-                {
-                    "question": "What alerts and notifications does the system send to users?",
-                    "answer": "The system sends timely alerts and notifications to users, informing them of critical events such as low water levels, system malfunctions, or maintenance requirements."
-                },
-                {
-                    "question": "What optional feature can be added to the system for enhanced monitoring?",
-                    "answer": "Optionally, the system can be expanded to include sensors for monitoring water quality, ensuring that the irrigated water meets the required standards for optimal plant growth."
-                },
-                {
-                    "question": "How does the system integrate with smart home systems?",
-                    "answer": "The system can be integrated with existing smart home systems, allowing users to include irrigation control in their overall home automation setup."
-                },
-                {
-                    "question": "What tool does the web interface include to help users estimate water savings?",
-                    "answer": "The web interface includes a water savings calculator, enabling users to estimate the amount of water saved over time compared to traditional irrigation methods."
-                },
-                {
-                    "question": "How does the system ensure users benefit from the latest features and improvements?",
-                    "answer": "The project includes a mechanism for receiving and implementing continuous software updates, ensuring that users benefit from the latest features, improvements, and security patches."
-                }
-            ],
-            "tags": ["IOT", "SOFTWARE"],
-            "price": 100
-        }
-    },
-    "temperature": 25.5,
-    "waterHistory": {
-        "uid12345678": {
-            "averageStartingTime": 0,
-            "email": "rafe@uddaraj.com",
-            "history": {
-                "1711052967": {
-                    "endTime": 1711052967,
-                    "startTime": 1711052967,
-                    "waterLevel": 10
-                }
-            },
-            "id": 1,
-            "isStarted": false,
-            "lastStartedTime": 1711052967,
-            "waterLevel": 0
+            ]
         }
     }
 }

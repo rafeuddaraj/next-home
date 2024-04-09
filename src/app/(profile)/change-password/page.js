@@ -11,7 +11,7 @@ export default function Password() {
                 <form className="flex w-full flex-col gap-3" action="">
                     <h2 className="text-4xl text-pink-500">This page is still development mode</h2>
                     <div className="flex w-full flex-col">
-                        <label className="flex" htmlFor="name">
+                        <label className="flex" htmlhtmlFor="name">
                             Current password
                             <span className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
                         </label>
@@ -23,7 +23,7 @@ export default function Password() {
                     </div>
 
                     <div className="flex w-full flex-col">
-                        <label className="flex" htmlFor="name">
+                        <label className="flex" htmlhtmlFor="name">
                             New Password
                             <span className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
                         </label>
@@ -35,7 +35,7 @@ export default function Password() {
                     </div>
 
                     <div className="flex flex-col">
-                        <label className="flex" htmlFor="">
+                        <label className="flex" htmlhtmlFor="">
                             Repeat New Password
                             <span className="block text-sm font-medium text-slate-700 after:ml-0.5 after:text-red-500 after:content-['*']"></span>
                         </label>

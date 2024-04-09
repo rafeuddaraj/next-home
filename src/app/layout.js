@@ -10,7 +10,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body >
-        <Header />
         {children}
         <footer className="footer items-center p-4 bg-base-300 !container">
           <aside className="items-center grid-flow-col">

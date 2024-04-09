@@ -1,18 +1,22 @@
+import { app } from "@/firebase/firebase";
 import useAuthChecker from "@/hooks/useAuthChecker";
+import { getDatabase, ref, set } from "firebase/database";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from 'react';
 
 export default function PaymentModal({ onShowModal, product }) {
-    const { title, price } = product || {};
+    const { title, price, id } = product || {};
     const auth = useAuthChecker()
-    const { displayName, email } = auth || {}
+    const { displayName, email, uid } = auth || {}
     const router = useRouter()
+    const dbRef = ref(getDatabase(app), `/buyProducts/${uid}`)
+
     if (auth === null) router.push('/signin')
 
     const overlay = useRef();
     const [formData, setFormData] = useState({
-        transactionId: '',
-        paymentMethod: '',
+        paymentMethod: "",
+        transactionsId: ""
     });
 
     const handleDismiss = (e) => {
@@ -31,14 +35,22 @@ export default function PaymentModal({ onShowModal, product }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Perform any action with formData here, such as submitting it to a server
-        console.log(formData);
-        // Clear form fields after submission if needed
-        setFormData({
-            transactionId: '',
-            paymentMethod: '',
-        });
-        onShowModal(false)
+        const paymentData = {
+            productId: id,
+            productTitle: title,
+            userId: uid,
+            fullName: displayName,
+            paymentStatus: true,
+            totalPayment: price,
+        }
+        set(dbRef, {
+            ...paymentData,
+            ...formData
+        }).then(() => {
+            onShowModal(false)
+            router.push('/dashboard')
+        })
+
     };
 
     return (

@@ -1,43 +1,47 @@
 'use client'
 
+import { app } from '@/firebase/firebase';
 import useAuthChecker from '@/hooks/useAuthChecker';
+import { child, get, getDatabase, ref } from 'firebase/database';
 import Image from 'next/image';
 import Link from "next/link";
+import { useState } from 'react';
 import Logout from "../Buttons/Logout";
 import DarkModeIcon from "./DarkModeIcon";
 
 export default function Header() {
     const auth = useAuthChecker()
+    const dbRef = ref(getDatabase(app))
+    const [haveProduct, setHaveProduct] = useState(false)
+    const [productLength, setProductLength] = useState(false)
+    if (auth) {
+        get(child(dbRef, `/buyProducts/${auth?.uid}`)).then(snapshot => {
+            if (snapshot.exists()) {
+                if (snapshot.val()) {
+                    setHaveProduct(true)
+                    setProductLength(1)
+                }
+            }
+        })
+    }
     const { photoURL, email } = auth || {}
     return (
         <>
             <nav className="navbar bg-base-300 sticky top-0 z-50 shadow-md">
                 <div className="flex-1">
-                    <Link href={'/'} className="btn btn-ghost text-xl text-[#FF00D3] font-bold">
-                        <Image className="h-10 w-10" height={20} width={20} src="/logo.svg" alt="logo" />
+                    <Link href={'/'} className="btn btn-ghost text-sm sm:text-xl text-[#FF00D3] font-bold">
+                        <Image className="h-8 w-8 sm:h-10 sm:w-10" height={20} width={20} src="/logo.svg" alt="logo" />
                         Next Home
                     </Link>
                 </div>
                 <div className="flex-none">
                     <DarkModeIcon />
-
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                            <div className="indicator">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                <span className="badge badge-sm indicator-item">8</span>
-                            </div>
+                    {haveProduct && <Link href='/dashboard' className="btn btn-ghost btn-circle">
+                        <div className="indicator">
+                            <Image src={'/dashboard.svg'} height={20} width={20} alt='dashboard' />
+                            <span className="badge badge-sm indicator-item">{productLength}</span>
                         </div>
-                        <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
-                            <div className="card-body">
-                                <span className="font-bold text-lg">8 Items</span>
-                                <span className="text-info">Subtotal: $999</span>
-                                <div className="card-actions">
-                                    <button className="btn btn-primary btn-block">View cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </Link>}
                     {auth ? (<>
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -52,14 +56,13 @@ export default function Header() {
                                         <span className="badge">New</span>
                                     </Link>
                                 </li>
-                                <li><Link href={'/dashboard'}>Dashboard</Link></li>
                                 <li>
                                     <Logout />
                                 </li>
                             </ul>
                         </div>
                     </>) : (<>
-                        <Link href='/signin' className="btn btn-primary mx-5">Sign In Now</Link>
+                        <Link href='/signin' className="btn btn-primary mx-1 sm:mx-5 px-[2px] sm:px-[1rem]">Sign In Now</Link>
                     </>)}
                 </div>
             </nav>
