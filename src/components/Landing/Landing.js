@@ -121,8 +121,8 @@ export default function Landing() {
 
                                     I've been using the IOT Flower Watering System for a few weeks now, and I'm very impressed with it. My plants have never looked healthier, and I have peace of mind knowing that they're always getting the water they need.</p>
                                 <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                                <h2 className="text-gray-900 dark:text-white font-medium title-font tracking-wider text-sm">Rafe Uddaraj</h2>
-                                <p className="text-gray-500 dark:text-white">Full Stack Developer</p>
+                                <h2 className="text-pink-400 font-medium title-font tracking-wider text-sm">Rafe Uddaraj</h2>
+                                <p className="text-green-400">Full Stack Developer</p>
                             </div>
                         </div>
                     </section>
