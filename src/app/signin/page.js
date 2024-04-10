@@ -44,7 +44,7 @@ export default function SignIN() {
                             <div className="p-6 sm:p-16">
                                 <div className="space-y-4">
                                     <Image src="/logo.svg" height={50} width={50} loading="lazy" className="w-10" alt="tailus logo" />
-                                    <h2 className="mb-8 text-2xl text-cyan-900 font-bold">Sign in to unlock the <br /> best of Tailus.</h2>
+                                    <h2 className="mb-8 text-2xl text-cyan-900 font-bold">Sign in to unlock the <br /> Next Home.</h2>
                                 </div>
                                 <div className="mt-16 grid space-y-4">
                                     <button className="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 

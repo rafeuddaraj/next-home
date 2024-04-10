@@ -1,5 +1,6 @@
 import { app } from "@/firebase/firebase";
 import useAuthChecker from "@/hooks/useAuthChecker";
+import { sendMail } from "@/lib/sendMail";
 import { getDatabase, ref, set } from "firebase/database";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from 'react';
@@ -57,6 +58,7 @@ export default function PaymentModal({ onShowModal, product }) {
                 "userId": uid,
                 "waterLevel": 0
             }
+            sendMail({ ...formData, price, id, name: displayName, email, uid })
             set(dbRef2, {
                 ...irrigatorData
             }).then(() => {

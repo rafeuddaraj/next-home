@@ -74,8 +74,8 @@ export default async function page({ params: { productId } }) {
                 <section className="text-gray-600 body-font">
                     <div className="!container px-5 py-24 mx-auto">
                         <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
-                            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-pink-500">Pitchfork Kickstarter Taxidermy</h1>
-                            <p className="lg:w-1/2 w-full leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table.</p>
+                            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-pink-500">KEY FEATURED</h1>
+                            <p className="lg:w-1/2 w-full leading-relaxed text-base">This system aims to revolutionize agricultural practices by enabling remotely controlled watering via the internet. It offers advanced automation and precision irrigation, leading to increased efficiency, water conservation, and crop yield.</p>
                         </div>
                         <div className="flex flex-wrap -m-4 justify-center">
                             {featured.map(({ title, description, image }) => <div key={title} className="xl:w-1/3 md:w-1/2 p-4">
@@ -98,8 +98,8 @@ export default async function page({ params: { productId } }) {
                 <section id="buy">
                     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-pink-500">Designed for business teams like yours</h2>
-                            <p className="mb-5 font-light">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-pink-500">Next Irrigator</h2>
+                            <p className="mb-5 font-light">The Next Irrigator is the most advanced home irrigation system on the market. With its sleek design, intuitive app, and powerful features, the Next Irrigator is the perfect way to keep your lawn and garden looking their best.</p>
                         </div>
                         <div className="space-y-8 lg:grid sm:gap-6 xl:gap-10 lg:space-y-0 justify-center justify-items-center items-center">
                             {/* <!-- Pricing Card --> */}
