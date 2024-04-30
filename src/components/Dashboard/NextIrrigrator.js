@@ -23,6 +23,7 @@ export default function NextIrrigator() {
                 }
             })
         }
+        trackFirst.current = 2
         return () => {
             trackFirst.current = 1
         }
@@ -97,9 +98,11 @@ export default function NextIrrigator() {
                     </div>
                     <div className="mt-8 relative">
 
-                        {startStatus ? <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" /> : startStatus === false ? <video className="w-full rounded-lg shadow-md" autoPlay muted>
+                        {startStatus && <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" />}
+                        {startStatus === false && trackFirst.current === 1 && "Stop"}
+                        {!startStatus && trackFirst.current !== 1 && <video className="w-full rounded-lg shadow-md" autoPlay muted>
                             <source src="/stop.mp4" type="video/mp4" />
-                        </video> : "Stop"}
+                        </video>}
 
 
 
