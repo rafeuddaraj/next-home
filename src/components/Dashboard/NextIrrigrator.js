@@ -2,7 +2,6 @@
 import { app } from '@/firebase/firebase';
 import useAuthChecker from '@/hooks/useAuthChecker';
 import { getDatabase, onValue, ref, update } from 'firebase/database';
-import moment from 'moment';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -10,8 +9,6 @@ export default function NextIrrigator() {
     const auth = useAuthChecker()
     const db = getDatabase(app)
     const trackFirst = useRef(1)
-    const [autoStopCountDown, setAutoStopCountDown] = useState(0)
-    // console.log(app);
     const [irrigatorDetails, setIrrigatorDetails] = useState(null);
     useEffect(() => {
         if (auth) {
@@ -20,6 +17,7 @@ export default function NextIrrigator() {
                 if (snapshot.exists()) {
                     const irrigator = snapshot.val()
                     setIrrigatorDetails(irrigator)
+
                 }
             })
         }
@@ -29,59 +27,24 @@ export default function NextIrrigator() {
         }
     }, [auth, db])
 
+    const [loading, setLoading] = useState(false)
 
     const handleOnOFF = useCallback((status) => {
         const dbRef = ref(getDatabase(app), `/nextIrrigator/${auth.uid}`)
+        setLoading(true)
         update(dbRef, {
             startStatus: status
+        }).then(() => {
+            setLoading(false)
         })
     }, [auth?.uid])
 
-    // eslint-disable-next-line no-unused-vars
-    const { startStatus, lastStartedTime, waterLevel, averageStartingTime, history } = irrigatorDetails || {}
+    const { startStatus, waterLevel, responseStartStatus } = irrigatorDetails || {}
 
-    const historyArrayAvgTime = Object.keys(history || {}).map(key => {
-        const startTime = moment(history[key].startTime)
-        const endTime = moment(history[key].endTime)
-        return moment.duration(moment(endTime).diff(moment(startTime))).asMinutes().toFixed(2)
-    })
-
-    const avgTime = historyArrayAvgTime.reduce((prev, curr) => Number(prev) + Number(curr), 0) / historyArrayAvgTime.length
-
-    const timerRef = useRef()
-
-    useEffect(() => {
-        if (avgTime) {
-            timerRef.current = setTimeout(() => {
-                handleOnOFF(false)
-            }, avgTime * 60000)
-        }
-        return () => {
-            clearTimeout(timerRef.current)
-        }
-    }, [avgTime, handleOnOFF, startStatus])
-
-    const autoCountDownRef = useRef()
-
-    const tick = useCallback(() => {
-        setAutoStopCountDown(prev => prev - 1)
-
-    }, [])
-
-    useEffect(() => {
-        if (avgTime) {
-            setAutoStopCountDown((avgTime * 60000) / 1000)
-        }
-    }, [avgTime])
-
-    useEffect(() => {
-        autoCountDownRef.current = setInterval(tick, 1000)
-        return () => {
-            clearInterval(autoCountDownRef.current)
-        }
-    }, [tick])
-
-
+    // const [voltage, setVoltage] = useState(0)
+    // const handleSlider = (e) => {
+    //     setVoltage(e.target.value)
+    // }
 
     return (
         <section className="my-10">
@@ -96,11 +59,10 @@ export default function NextIrrigator() {
                             }
                         }}>Turn Off</button>
                     </div>
-                    <div className="mt-8 relative">
+                    <div className={`mt-8 relative ${loading ? 'animate-pulse' : ''}`}>
 
-                        {startStatus && <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" />}
-                        {startStatus === false && trackFirst.current === 1 && "Stop"}
-                        {!startStatus && trackFirst.current !== 1 && <video className="w-full rounded-lg shadow-md" autoPlay muted>
+                        {responseStartStatus && <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" />}
+                        {!responseStartStatus && trackFirst.current !== 1 && <video className="w-full rounded-lg shadow-md" autoPlay muted>
                             <source src="/stop.mp4" type="video/mp4" />
                         </video>}
 
@@ -117,24 +79,21 @@ export default function NextIrrigator() {
                     <path fill="none" d="M12 5c-1.8 0-3.2 1.4-3.2 3s1.4 3 3.2 3 3.2-1.4 3.2-3-1.4-3-3.2-3zM7.16 16.84l4.84-4.84c.78-.78 2.05-.78 2.83 0l.78.78c.78.78.78 2.05 0 2.83l-4.84 4.84c-.78.78-2.05.78-2.83 0z" />
                 </svg>
 
+                {/* <div>
+                    <input onChange={handleSlider} type="range" min={0} max="100" value={voltage} className="range" step="25" />
+                    <div className="w-full flex justify-between text-xs px-2">
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                    </div>
+                </div> */}
+
 
                 <div className='flex justify-center items-center my-10'>
                     <div className="radial-progress border-pink-500 border-4 " style={{ "--value": `${waterLevel * 10}`, "--size": "12rem", "--thickness": "2rem" }} role="progressbar">{waterLevel * 10}%</div>
                 </div>
-                {startStatus && <div className="grid grid-flow-col gap-5 text-center auto-cols-max w-[27%] mx-auto my-5">
-                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                        <span className="countdown font-mono text-5xl">
-                            <span style={{ "--value": parseInt(autoStopCountDown) / 60 }}></span>
-                        </span>
-                        min
-                    </div>
-                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                        <span className="countdown font-mono text-5xl">
-                            <span style={{ "--value": parseInt(autoStopCountDown) % 60 }}></span>
-                        </span>
-                        sec
-                    </div>
-                </div>}
             </div>
 
         </section>
