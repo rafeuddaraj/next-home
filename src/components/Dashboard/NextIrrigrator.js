@@ -56,20 +56,24 @@ export default function NextIrrigator() {
                             }
                         }}>Turn Off</button>
                     </div>
-                    <div className={`mt-8 relative ${loading ? 'animate-pulse' : ''}`}>
+                    <div className="mt-8 relative">
 
-                        {responseStartStatus && startStatus && <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" />}
-                        {!responseStartStatus && !startStatus && trackFirst.current !== 1 && <video className="w-full rounded-lg shadow-md" autoPlay muted>
+                        {responseStartStatus && startStatus && !loading && <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" />}
+                        {!responseStartStatus && !startStatus && !loading && trackFirst.current !== 1 && <video className="w-full rounded-lg shadow-md" autoPlay muted>
                             <source src="/stop.mp4" type="video/mp4" />
                         </video>}
-
-
-
                         <div id="loadingOverlay" className="absolute inset-0 bg-gray-500 opacity-75 hidden justify-center items-center">
                             <svg className="animate-spin h-10 w-10 text-white" viewBox="0 0 24 24">
                             </svg>
                             <span className="text-white ml-2">Loading...</span>
                         </div>
+
+                        {loading && (
+                            <div className='p-10 text-blue-500 border shadow-lg animate-pulse'>
+                                Please Wait...
+                            </div>
+                        )}
+
                     </div>
                 </div>
                 <svg id="refresh-icon" style={{ display: "none" }} viewBox="0 0 24 24">
