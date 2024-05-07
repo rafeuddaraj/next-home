@@ -9,7 +9,7 @@ export default function NextIrrigator() {
     const auth = useAuthChecker()
     const db = getDatabase(app)
     const trackFirst = useRef(1)
-    const localActive = useRef(null)
+    const [activeStatus, setActiveStatus] = useState(false)
     const [irrigatorDetails, setIrrigatorDetails] = useState(null);
     useEffect(() => {
         if (auth) {
@@ -39,20 +39,27 @@ export default function NextIrrigator() {
 
 
     const { startStatus, waterLevel, responseStartStatus, loading, active } = irrigatorDetails || {}
-    const activeCheck = () => {
-        if (active !== localActive.current) {
-            localActive.current = active
-            return true
-        }
-        return false
-    }
+
 
     // const [voltage, setVoltage] = useState(0)
     // const handleSlider = (e) => {
     //     setVoltage(e.target.value)
     // }
+    const currentStatus = useRef(active)
+    useEffect(() => {
+        if (currentStatus.current) {
+            if (currentStatus.current === active) {
+                setActiveStatus(false)
+            } else {
+                setActiveStatus(true)
+            }
+            currentStatus.current = active
+            return
+        } else {
+            currentStatus.current = active
+        }
 
-    const activeStatus = activeCheck()
+    }, [active])
 
     return (
         <section className="my-10">
