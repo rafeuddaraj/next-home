@@ -27,19 +27,16 @@ export default function NextIrrigator() {
         }
     }, [auth, db])
 
-    const [loading, setLoading] = useState(false)
 
     const handleOnOFF = useCallback((status) => {
         const dbRef = ref(getDatabase(app), `/nextIrrigator/${auth.uid}`)
-        setLoading(true)
         update(dbRef, {
-            startStatus: status
-        }).then(() => {
-            setLoading(false)
+            startStatus: status,
+            loading: true,
         })
     }, [auth?.uid])
 
-    const { startStatus, waterLevel, responseStartStatus } = irrigatorDetails || {}
+    const { startStatus, waterLevel, responseStartStatus, loading } = irrigatorDetails || {}
 
     // const [voltage, setVoltage] = useState(0)
     // const handleSlider = (e) => {
