@@ -78,10 +78,9 @@ export default function NextIrrigator() {
                     {
                         activeStatus && <div className="mt-8 relative">
 
-                            {responseStartStatus && startStatus && !loading && <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" />}
-                            {!responseStartStatus && !startStatus && !loading && trackFirst.current !== 1 && <video className="w-full rounded-lg shadow-md" autoPlay muted>
+                            {responseStartStatus && startStatus && !loading ? <Image height={100} width={100} src="/tenor.gif" alt="Waterfall Status" className="w-full rounded-lg shadow-md h-32" /> : !responseStartStatus && !startStatus && !loading && trackFirst.current !== 1 ? <video className="w-full rounded-lg shadow-md" autoPlay muted>
                                 <source src="/stop.mp4" type="video/mp4" />
-                            </video>}
+                            </video> : ''}
                             <div id="loadingOverlay" className="absolute inset-0 bg-gray-500 opacity-75 hidden justify-center items-center">
                                 <svg className="animate-spin h-10 w-10 text-white" viewBox="0 0 24 24">
                                 </svg>
