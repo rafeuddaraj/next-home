@@ -42,7 +42,7 @@ export default function PaymentModal({ onShowModal, product }) {
                 productTitle: title,
                 userId: uid,
                 fullName: displayName,
-                paymentStatus: false,
+                paymentStatus: true,
                 totalPayment: price,
             }
             set(dbRef, {
