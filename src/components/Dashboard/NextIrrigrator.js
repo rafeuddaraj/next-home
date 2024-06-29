@@ -4,6 +4,7 @@ import useAuthChecker from '@/hooks/useAuthChecker';
 import { getDatabase, onValue, ref, update } from 'firebase/database';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from "react";
+import Alert from './_components/Alert';
 
 export default function NextIrrigator() {
     const auth = useAuthChecker()
@@ -80,7 +81,7 @@ export default function NextIrrigator() {
     const second = countdown % 60 || 0
 
 
-    const [timeInput, setTimeInput] = useState("1");
+    const [timeInput, setTimeInput] = useState("0");
     const [inputType, setInputType] = useState("minutes");
 
     // Function to handle checkbox change
@@ -105,7 +106,11 @@ export default function NextIrrigator() {
 
     // Function to start countdown
     const startCountdown = () => {
-        if (timeInput.trim() !== "") {
+        if (timeInput.trim() === '0' || !timeInput.trim()) {
+            setShow(true)
+            return
+        }
+        if (timeInput.trim() !== "" && timeInput.trim() !== '0') {
             const inputAsNumber = parseInt(timeInput, 10);
             if (!isNaN(inputAsNumber)) {
                 let totalSeconds = inputAsNumber;
@@ -125,14 +130,22 @@ export default function NextIrrigator() {
             timer = setTimeout(() => {
                 setCountdown(countdown - 1);
             }, 1000);
-        } else if (countdown === 0) {
+        } else if (countdown === 0 && timeInput.trim() !== '0') {
             // Handle countdown completion
             setCountdown(null);
-            setTimeInput("");
+            setTimeInput("0");
+            const dbRef = ref(db, `/nextIrrigator/${auth.uid}`)
+            update(dbRef, {
+                timer: countdown,
+                startStatus: false
+            })
         }
         return () => clearTimeout(timer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [countdown]);
+
+    const [show, setShow] = useState(false);
+
 
     return (
         <section className="my-10">
@@ -215,12 +228,15 @@ export default function NextIrrigator() {
                                             Set Timer
                                         </button>
                                     </div>
+                                    <div>
+                                        {show && <Alert show={show} setShow={setShow} message={"Don't empty timing setting"} />}
+                                    </div>
                                 </>
                             )}
                         </div>
                     }
 
-                    {countdown !== null && (
+                    {countdown !== null && (timeInput.trim() !== '0') ? (
                         <span className="countdown font-mono text-6xl flex justify-center my-4 mx-5">
                             <span
                                 style={{
@@ -232,7 +248,9 @@ export default function NextIrrigator() {
                                     "--value": second,
                                 }}></span>
                         </span>
-                    )}
+                    ) : (<>
+                        {(startStatus && activeStatus) && <h4 className='text-2xl font-bold text-pink-400 my-3 text-center'> Non stop running...</h4>}
+                    </>)}
                 </div>
                 <svg id="refresh-icon" style={{ display: "none" }} viewBox="0 0 24 24">
                     <path fill="none" d="M12 5c-1.8 0-3.2 1.4-3.2 3s1.4 3 3.2 3 3.2-1.4 3.2-3-1.4-3-3.2-3zM7.16 16.84l4.84-4.84c.78-.78 2.05-.78 2.83 0l.78.78c.78.78.78 2.05 0 2.83l-4.84 4.84c-.78.78-2.05.78-2.83 0z" />
